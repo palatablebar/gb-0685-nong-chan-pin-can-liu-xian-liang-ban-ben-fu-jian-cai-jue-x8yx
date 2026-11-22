@@ -1,0 +1,30 @@
+{
+  "slot_day": "2026-11-22",
+  "capacity": 1,
+  "applications": [
+    {
+      "request_id": "REQ-2026-1122-01",
+      "batch": "B901",
+      "product": "苹果",
+      "analyte": "P01",
+      "received_at": "2026-11-22T08:58:00+08:00",
+      "expires_at": "2026-11-25",
+      "promise_due": "2026-11-22",
+      "risk_level": "PASS",
+      "risk_evidence": "verified",
+      "note": "普通批次，出证承诺今日到期，失约即违约"
+    },
+    {
+      "request_id": "REQ-2026-1122-02",
+      "batch": "B902",
+      "product": "苹果",
+      "analyte": "P02",
+      "received_at": "2026-11-22T08:59:00+08:00",
+      "expires_at": "2026-11-24",
+      "promise_due": null,
+      "risk_level": "FAIL",
+      "risk_evidence": "questionable",
+      "note": "初检超限风险更高，但谱图证据存疑，待补证"
+    }
+  ]
+}

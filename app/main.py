@@ -6,10 +6,12 @@ from app.workflow import run,load
 from app import store
 from app.web import payload
 from app.modules.m7_archive.export_out import bundle
+from app.slots.handler import bp as slots_bp
 
 def create_app():
     app=Flask(__name__);app.config['MAX_CONTENT_LENGTH']=2_000_000
     for entry in MODULES:app.register_blueprint(importlib.import_module('app.modules.'+entry[0]+'.handler').bp)
+    app.register_blueprint(slots_bp)
     @app.errorhandler(DomainError)
     def domain_error(error):return jsonify(code=error.code,message=error.message),error.status
     @app.errorhandler(404)

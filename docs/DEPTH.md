@@ -13,6 +13,7 @@
 | M5 复检裁决 | 查看并复算复检裁决 | `/api/m5_calculate` | `app/modules/m5_calculate/rules.py` | `tests/test_calculate.py` |
 | M6 批次判级 | 查看并复算批次判级 | `/api/m6_reconcile` | `app/modules/m6_reconcile/compare.py` | `tests/test_reconcile.py` |
 | M7 报告归档 | 查看并复算报告归档 | `/api/m7_archive` | `app/modules/m7_archive/export_out.py` | `tests/test_archive.py` |
+| M8 席位承诺账 | 采信申请、预览并发布承诺账 | `/api/slots/ledger` | `app/slots/ledger.py` | `tests/test_slots.py` |
 
 ## 陷阱登记
 
@@ -32,6 +33,9 @@
 | TRAP-15 | ug/kg与mg/kg | 差1000倍 | 浓度统一mg/kg | `app/modules/m4_segments/rules.py` | `tests/test_segments.py::test_unit_conversion` |
 | TRAP-25 | 标准时间边界 | 双版或错版 | 采样日半开区间选版 | `app/modules/m3_versions/standards.py` | `tests/test_versions.py::test_halfopen_effective` |
 | TRAP-20 | 复检引用环 | 遍历无法结束 | 引用路径检测 | `app/modules/m5_calculate/rules.py` | `tests/test_calculate.py::test_cycle_rejected` |
+| TRAP-27 | 同源重跑占位 | 重复占席 | 内容寻址版本+幂等键 | `app/slots/ledger.py` | `tests/test_slots.py::test_same_source_rerun_no_double_occupancy` |
+| TRAP-28 | 发布中断半版 | 新旧混发 | 单事务+头指针 | `app/slots/ledger.py` | `tests/test_slots.py::test_interrupted_publish_keeps_old_ledger` |
+| TRAP-29 | 原始申请改写 | 留档失真 | 只追加+同源异内容409 | `app/slots/ledger.py` | `tests/test_slots.py::test_invalid_application_rejected` |
 
 ## 对账规则
 
